@@ -208,7 +208,7 @@ export default function SpeechScreening() {
               <div className="grid gap-4">
                 <div className="flex items-center gap-3 p-3 bg-success-soft rounded-lg">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                  <span className="text-sm text-success-foreground">Takes 2-3 minutes to complete</span>
+                  <span className="text-sm text-success">Takes 2-3 minutes to complete</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-primary-soft rounded-lg">
                   <Baby className="w-5 h-5 text-primary flex-shrink-0" />
