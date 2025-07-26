@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://aseladarshan.github.io/little-talk-buddy/"
+  "homepage": "https://aseladarshan.github.io/little-talk-buddy/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
