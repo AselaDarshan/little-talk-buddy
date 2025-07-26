@@ -115,7 +115,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    background-image: url('./assets/background-art.jpg');
+    background-image: url('/src/assets/background-art.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
