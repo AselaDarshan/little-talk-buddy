@@ -8,40 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Healthcare-inspired color palette */
-    --background: 210 40% 98%;
-    --foreground: 215 25% 26%;
+    /* Enhanced calming color palette */
+    --background: 220 35% 98%;
+    --foreground: 220 20% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 26%;
+    --card-foreground: 220 20% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 26%;
+    --popover-foreground: 220 20% 25%;
 
-    /* Calming medical blue */
-    --primary: 210 100% 56%;
+    /* Serene blue-purple primary */
+    --primary: 230 85% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 210 100% 96%;
+    --primary-soft: 230 85% 96%;
 
-    /* Soft secondary colors */
-    --secondary: 142 76% 96%;
-    --secondary-foreground: 142 76% 36%;
+    /* Soft mint secondary */
+    --secondary: 160 65% 92%;
+    --secondary-foreground: 160 65% 30%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 20% 46%;
+    /* Gentle lavender tones */
+    --muted: 250 25% 95%;
+    --muted-foreground: 250 15% 45%;
 
-    --accent: 142 76% 93%;
-    --accent-foreground: 142 76% 36%;
+    --accent: 160 45% 90%;
+    --accent-foreground: 160 45% 28%;
 
-    /* Success green for positive milestones */
-    --success: 142 76% 46%;
+    /* Calming sage green for success */
+    --success: 145 50% 55%;
     --success-foreground: 0 0% 100%;
-    --success-soft: 142 76% 96%;
+    --success-soft: 145 50% 94%;
 
-    /* Warning orange for delays */
-    --warning: 35 91% 56%;
+    /* Warm peach for warnings */
+    --warning: 25 85% 70%;
     --warning-foreground: 0 0% 100%;
-    --warning-soft: 35 91% 96%;
+    --warning-soft: 25 85% 95%;
+
+    /* Soft coral accent */
+    --coral: 15 80% 75%;
+    --coral-foreground: 0 0% 100%;
+    --coral-soft: 15 80% 95%;
+
+    /* Gentle sky blue */
+    --sky: 200 75% 70%;
+    --sky-foreground: 0 0% 100%;
+    --sky-soft: 200 75% 95%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -115,7 +126,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    background-image: url('/src/assets/background-art.jpg');
+    background-image: url('/src/assets/calming-pattern.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

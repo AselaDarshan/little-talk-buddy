@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, AlertCircle, Baby, Users, Sparkles } from "lucide-react";
+import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart } from "lucide-react";
+import childrenLearning from "@/assets/children-learning.jpg";
+import familyBonding from "@/assets/family-bonding.jpg";
 
 interface Milestone {
   id: string;
@@ -185,20 +187,35 @@ export default function SpeechScreening() {
     return (
       <div className="min-h-screen bg-background p-4">
         <div className="max-w-2xl mx-auto">
-          <Card className="border-primary/20 shadow-lg">
-            <CardHeader className="text-center space-y-4">
-              <div className="mx-auto w-16 h-16 bg-primary-soft rounded-full flex items-center justify-center">
-                <Sparkles className="w-8 h-8 text-primary" />
+          <Card className="border-primary/20 shadow-xl backdrop-blur-sm bg-card/95">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-t-lg overflow-hidden">
+                <img 
+                  src={childrenLearning} 
+                  alt="Children learning" 
+                  className="w-full h-32 object-cover opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card"></div>
               </div>
-              <CardTitle className="text-2xl text-primary">Speech Development Screening</CardTitle>
-              <CardDescription className="text-base">
-                A simple tool to help parents track their child's speech and language milestones
-              </CardDescription>
-            </CardHeader>
+              <CardHeader className="text-center space-y-4 relative z-10 pt-8">
+                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-sky rounded-full flex items-center justify-center shadow-lg">
+                  <Sparkles className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-2xl bg-gradient-to-r from-primary to-sky bg-clip-text text-transparent">
+                  Speech Development Screening
+                </CardTitle>
+                <CardDescription className="text-base">
+                  A simple tool to help parents track their child's speech and language milestones
+                </CardDescription>
+              </CardHeader>
+            </div>
             
             <CardContent className="space-y-6">
-              <div className="bg-accent p-4 rounded-lg">
-                <h3 className="font-semibold text-accent-foreground mb-2">Important Note</h3>
+              <div className="bg-gradient-to-r from-accent to-sky-soft p-4 rounded-lg border border-accent/30">
+                <h3 className="font-semibold text-accent-foreground mb-2 flex items-center gap-2">
+                  <Heart className="w-4 h-4" />
+                  Important Note
+                </h3>
                 <p className="text-sm text-accent-foreground">
                   This screening is not a diagnostic tool. It's designed to help you understand typical speech development 
                   and identify when you might want to consult with a speech-language pathologist or pediatrician.
@@ -206,17 +223,17 @@ export default function SpeechScreening() {
               </div>
               
               <div className="grid gap-4">
-                <div className="flex items-center gap-3 p-3 bg-success-soft rounded-lg">
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-success-soft to-success/10 rounded-lg border border-success/20">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
-                  <span className="text-sm text-success">Takes 2-3 minutes to complete</span>
+                  <span className="text-sm text-success font-medium">Takes 2-3 minutes to complete</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-primary-soft rounded-lg">
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-primary-soft to-primary/10 rounded-lg border border-primary/20">
                   <Baby className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-primary">Age-appropriate milestones</span>
+                  <span className="text-sm text-primary font-medium">Age-appropriate milestones</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-secondary rounded-lg">
-                  <Users className="w-5 h-5 text-secondary-foreground flex-shrink-0" />
-                  <span className="text-sm text-secondary-foreground">Guidance for next steps</span>
+                <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-coral-soft to-coral/10 rounded-lg border border-coral/20">
+                  <Users className="w-5 h-5 text-coral flex-shrink-0" />
+                  <span className="text-sm text-coral font-medium">Guidance for next steps</span>
                 </div>
               </div>
             </CardContent>
@@ -224,7 +241,7 @@ export default function SpeechScreening() {
             <CardFooter>
               <Button 
                 onClick={() => setCurrentStep("age-selection")} 
-                className="w-full"
+                className="w-full bg-gradient-to-r from-primary to-sky hover:from-primary/90 hover:to-sky/90 shadow-lg"
                 size="lg"
               >
                 Start Screening
@@ -240,24 +257,38 @@ export default function SpeechScreening() {
     return (
       <div className="min-h-screen bg-background p-4">
         <div className="max-w-2xl mx-auto">
-          <Card>
-            <CardHeader className="text-center">
-              <CardTitle className="text-xl text-primary">Select Your Child's Age</CardTitle>
-              <CardDescription>
-                Choose the age group that best matches your child's current age
-              </CardDescription>
-            </CardHeader>
+          <Card className="backdrop-blur-sm bg-card/95 shadow-xl">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-t-lg overflow-hidden">
+                <img 
+                  src={familyBonding} 
+                  alt="Family bonding" 
+                  className="w-full h-24 object-cover opacity-15"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card"></div>
+              </div>
+              <CardHeader className="text-center relative z-10">
+                <CardTitle className="text-xl bg-gradient-to-r from-primary to-coral bg-clip-text text-transparent">
+                  Select Your Child's Age
+                </CardTitle>
+                <CardDescription>
+                  Choose the age group that best matches your child's current age
+                </CardDescription>
+              </CardHeader>
+            </div>
             
             <CardContent className="space-y-4">
               {ageGroups.map((group) => (
                 <Button
                   key={group.id}
                   variant="outline"
-                  className="w-full p-6 h-auto justify-start text-left hover:bg-primary-soft hover:border-primary"
+                  className="w-full p-6 h-auto justify-start text-left hover:bg-gradient-to-r hover:from-primary-soft hover:to-sky-soft hover:border-primary/50 transition-all duration-300 group"
                   onClick={() => handleAgeSelection(group)}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-2xl">{group.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-coral-soft to-primary-soft rounded-full flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                      {group.icon}
+                    </div>
                     <div>
                       <div className="font-semibold">{group.name}</div>
                       <div className="text-sm text-muted-foreground">{group.milestones.length} milestones to check</div>
@@ -310,10 +341,10 @@ export default function SpeechScreening() {
                 Does your child currently do this?
               </p>
               
-              <div className="grid gap-3">
+              <div className="grid gap-4">
                 <Button
                   onClick={() => handleAnswer(currentMilestone.id, true)}
-                  className="w-full p-4 h-auto bg-success hover:bg-success/90 text-success-foreground"
+                  className="w-full p-4 h-auto bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success/70 text-success-foreground shadow-lg transition-all duration-300 hover:scale-[1.02]"
                 >
                   <CheckCircle className="w-5 h-5 mr-2" />
                   Yes, they do this
@@ -322,7 +353,7 @@ export default function SpeechScreening() {
                 <Button
                   onClick={() => handleAnswer(currentMilestone.id, false)}
                   variant="outline"
-                  className="w-full p-4 h-auto border-warning/30 hover:bg-warning-soft"
+                  className="w-full p-4 h-auto border-coral/40 hover:bg-gradient-to-r hover:from-coral-soft hover:to-warning-soft transition-all duration-300 hover:scale-[1.02] hover:border-coral/60"
                 >
                   <AlertCircle className="w-5 h-5 mr-2" />
                   Not yet or rarely
@@ -369,18 +400,36 @@ export default function SpeechScreening() {
                 </div>
               </div>
               
-              <div className="bg-accent p-4 rounded-lg">
-                <h3 className="font-semibold text-accent-foreground mb-2">What's Next?</h3>
-                <ul className="text-sm text-accent-foreground space-y-1">
-                  <li>• Continue reading and talking with your child daily</li>
-                  <li>• Play interactive games and sing songs together</li>
+              <div className="bg-gradient-to-r from-accent to-sky-soft p-5 rounded-lg border border-accent/30">
+                <h3 className="font-semibold text-accent-foreground mb-3 flex items-center gap-2">
+                  <Heart className="w-4 h-4" />
+                  What's Next?
+                </h3>
+                <ul className="text-sm text-accent-foreground space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>Continue reading and talking with your child daily</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-coral">•</span>
+                    <span>Play interactive games and sing songs together</span>
+                  </li>
                   {results.percentage < 80 && (
                     <>
-                      <li>• Consider discussing results with your pediatrician</li>
-                      <li>• Look into early intervention services if recommended</li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-warning">•</span>
+                        <span>Consider discussing results with your pediatrician</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-sky">•</span>
+                        <span>Look into early intervention services if recommended</span>
+                      </li>
                     </>
                   )}
-                  <li>• Re-screen in 3-6 months to track progress</li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-success">•</span>
+                    <span>Re-screen in 3-6 months to track progress</span>
+                  </li>
                 </ul>
               </div>
             </CardContent>
