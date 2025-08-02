@@ -452,7 +452,7 @@ export default function SpeechScreening() {
             
             <CardFooter className="gap-2">
               <Button variant="outline" onClick={resetScreening} className="flex-1">
-                Screen Another Age
+                Screen Again
               </Button>
               <Button 
                 onClick={() => {
