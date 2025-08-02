@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart } from "lucide-react";
+import { analytics } from "@/lib/analytics";
 import childrenLearning from "@/assets/children-learning.jpg";
 import familyBonding from "@/assets/family-bonding.jpg";
 
@@ -132,15 +133,22 @@ export default function SpeechScreening() {
   const handleAgeSelection = (ageGroup: AgeGroup) => {
     setSelectedAgeGroup(ageGroup);
     setCurrentStep("screening");
+    analytics.selectAgeGroup(ageGroup.name);
+    analytics.startScreening(ageGroup.name);
   };
 
   const handleAnswer = (milestoneId: string, answer: boolean) => {
     setAnswers(prev => ({ ...prev, [milestoneId]: answer }));
+    analytics.answerQuestion(milestoneId, answer);
     
     if (selectedAgeGroup && currentQuestionIndex < selectedAgeGroup.milestones.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
       setCurrentStep("results");
+      if (selectedAgeGroup) {
+        const results = calculateResults();
+        analytics.completeScreening(selectedAgeGroup.name, results.score, results.percentage);
+      }
     }
   };
 
@@ -181,6 +189,7 @@ export default function SpeechScreening() {
     setSelectedAgeGroup(null);
     setAnswers({});
     setCurrentQuestionIndex(0);
+    analytics.restartScreening();
   };
 
   if (currentStep === "welcome") {
@@ -299,7 +308,14 @@ export default function SpeechScreening() {
             </CardContent>
             
             <CardFooter>
-              <Button variant="outline" onClick={() => setCurrentStep("welcome")} className="w-full">
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setCurrentStep("welcome");
+                  analytics.goBack("age-selection");
+                }} 
+                className="w-full"
+              >
                 Back
               </Button>
             </CardFooter>
@@ -438,7 +454,16 @@ export default function SpeechScreening() {
               <Button variant="outline" onClick={resetScreening} className="flex-1">
                 Screen Another Age
               </Button>
-              <Button onClick={() => window.print()} className="flex-1">
+              <Button 
+                onClick={() => {
+                  window.print();
+                  if (selectedAgeGroup) {
+                    const results = calculateResults();
+                    analytics.saveResults(selectedAgeGroup.name, results.percentage);
+                  }
+                }} 
+                className="flex-1"
+              >
                 Save Results
               </Button>
             </CardFooter>
