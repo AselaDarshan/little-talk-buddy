@@ -86,4 +86,13 @@ export const analytics = {
       event_category: 'navigation',
       event_label: fromStep,
     }),
+
+  // Feedback events
+  provideFeedback: (rating: number, comment: string) =>
+    trackEvent('provide_feedback', {
+      event_category: 'feedback',
+      event_label: `Rating: ${rating}`,
+      value: rating,
+      comment,
+    }),
 };

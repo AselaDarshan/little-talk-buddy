@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart, Star, ThumbsUp, ThumbsDown } from "lucide-react";
 import { analytics } from "@/lib/analytics";
 import childrenLearning from "@/assets/children-learning.jpg";
 import familyBonding from "@/assets/family-bonding.jpg";
@@ -129,6 +130,7 @@ export default function SpeechScreening() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | null>(null);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [feedback, setFeedback] = useState({ rating: 0, comment: "", submitted: false });
 
   const handleAgeSelection = (ageGroup: AgeGroup) => {
     setSelectedAgeGroup(ageGroup);
@@ -184,11 +186,17 @@ export default function SpeechScreening() {
     }
   };
 
+  const handleFeedbackSubmit = () => {
+    setFeedback(prev => ({ ...prev, submitted: true }));
+    analytics.provideFeedback(feedback.rating, feedback.comment);
+  };
+
   const resetScreening = () => {
     setCurrentStep("welcome");
     setSelectedAgeGroup(null);
     setAnswers({});
     setCurrentQuestionIndex(0);
+    setFeedback({ rating: 0, comment: "", submitted: false });
     analytics.restartScreening();
   };
 
@@ -449,25 +457,92 @@ export default function SpeechScreening() {
                 </ul>
               </div>
             </CardContent>
-            
-            <CardFooter className="gap-2">
-              <Button variant="outline" onClick={resetScreening} className="flex-1">
-                Screen Again
-              </Button>
-              <Button 
-                onClick={() => {
-                  window.print();
-                  if (selectedAgeGroup) {
-                    const results = calculateResults();
-                    analytics.saveResults(selectedAgeGroup.name, results.percentage);
-                  }
-                }} 
-                className="flex-1"
-              >
-                Save Results
-              </Button>
-            </CardFooter>
           </Card>
+
+          {/* Feedback Section */}
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Heart className="w-5 h-5 text-primary" />
+                How was your experience?
+              </CardTitle>
+              <CardDescription>
+                Your feedback helps us improve this screening tool for other parents
+              </CardDescription>
+            </CardHeader>
+            
+            <CardContent className="space-y-4">
+              {!feedback.submitted ? (
+                <>
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Rate your experience</label>
+                    <div className="flex gap-2">
+                      <Button
+                        variant={feedback.rating === 1 ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setFeedback(prev => ({ ...prev, rating: 1 }))}
+                        className="flex items-center gap-1"
+                      >
+                        <ThumbsDown className="w-4 h-4" />
+                        Not helpful
+                      </Button>
+                      <Button
+                        variant={feedback.rating === 5 ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setFeedback(prev => ({ ...prev, rating: 5 }))}
+                        className="flex items-center gap-1"
+                      >
+                        <ThumbsUp className="w-4 h-4" />
+                        Very helpful
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium mb-2 block">Comments (optional)</label>
+                    <Textarea
+                      placeholder="Tell us how we can improve this tool..."
+                      value={feedback.comment}
+                      onChange={(e) => setFeedback(prev => ({ ...prev, comment: e.target.value }))}
+                      className="min-h-[80px]"
+                    />
+                  </div>
+                  
+                  <Button 
+                    onClick={handleFeedbackSubmit}
+                    disabled={feedback.rating === 0}
+                    className="w-full"
+                  >
+                    Submit Feedback
+                  </Button>
+                </>
+              ) : (
+                <div className="text-center p-4 bg-gradient-to-r from-success-soft to-success/10 rounded-lg border border-success/20">
+                  <CheckCircle className="w-8 h-8 text-success mx-auto mb-2" />
+                  <p className="font-medium text-success">Thank you for your feedback!</p>
+                  <p className="text-sm text-success/80">Your input helps us make this tool better for all families.</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          
+          <div className="flex gap-2 mt-6">
+            <Button variant="outline" onClick={resetScreening} className="flex-1">
+              Screen Again
+            </Button>
+            <Button 
+              onClick={() => {
+                window.print();
+                if (selectedAgeGroup) {
+                  const results = calculateResults();
+                  analytics.saveResults(selectedAgeGroup.name, results.percentage);
+                }
+              }} 
+              className="flex-1"
+            >
+              Save Results
+            </Button>
+          </div>
         </div>
       </div>
     );
