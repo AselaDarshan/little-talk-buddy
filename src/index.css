@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile viewport fixes */
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

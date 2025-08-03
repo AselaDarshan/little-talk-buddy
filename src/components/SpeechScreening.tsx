@@ -202,7 +202,8 @@ export default function SpeechScreening() {
 
   if (currentStep === "welcome") {
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom"
+           style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card className="border-primary/20 shadow-xl backdrop-blur-sm bg-card/95">
             <div className="relative">
@@ -272,7 +273,7 @@ export default function SpeechScreening() {
 
   if (currentStep === "age-selection") {
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card className="backdrop-blur-sm bg-card/95 shadow-xl">
             <div className="relative">
@@ -338,7 +339,7 @@ export default function SpeechScreening() {
     const progress = ((currentQuestionIndex) / selectedAgeGroup.milestones.length) * 100;
 
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -395,7 +396,7 @@ export default function SpeechScreening() {
     const resultMessage = getResultMessage(results.percentage);
 
     return (
-      <div className="min-h-screen bg-background p-4">
+      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card>
             <CardHeader className="text-center">
