@@ -8,6 +8,7 @@ import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart, Star, ThumbsUp,
 import { analytics } from "@/lib/analytics";
 import childrenLearning from "@/assets/children-learning.jpg";
 import familyBonding from "@/assets/family-bonding.jpg";
+import appIcon from "@/assets/app-icon.png";
 
 interface Milestone {
   id: string;
@@ -216,8 +217,8 @@ export default function SpeechScreening() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card"></div>
               </div>
               <CardHeader className="text-center space-y-4 relative z-10 pt-8">
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-sky rounded-full flex items-center justify-center shadow-lg">
-                  <Sparkles className="w-8 h-8 text-white" />
+                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-sky rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+                  <img src={appIcon} alt="Little Talk Buddy" className="w-12 h-12 object-contain" />
                 </div>
                 <CardTitle className="text-2xl bg-gradient-to-r from-primary to-sky bg-clip-text text-transparent">
                   Speech Development Screening
