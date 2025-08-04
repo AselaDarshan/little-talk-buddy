@@ -10,6 +10,7 @@ import childrenLearning from "@/assets/children-learning.jpg";
 import familyBonding from "@/assets/family-bonding.jpg";
 import appIcon from "@/assets/app-icon.png";
 import welcomeDoodle from "@/assets/welcome-doodle.png";
+import welcomeBackground from "@/assets/welcome-background.png";
 import ageSelectionDoodle from "@/assets/age-selection-doodle.png";
 import screeningDoodle from "@/assets/screening-doodle.png";
 import resultsSuccessDoodle from "@/assets/results-success-doodle.png";
@@ -208,30 +209,25 @@ export default function SpeechScreening() {
 
   if (currentStep === "welcome") {
     return (
-      <div className="min-h-screen bg-background p-4 pb-safe-bottom"
-           style={{ minHeight: '100dvh' }}>
-        <div className="max-w-2xl mx-auto">
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative"
+           style={{ 
+             minHeight: '100dvh',
+             backgroundImage: `url(${welcomeBackground})`,
+             backgroundSize: 'cover',
+             backgroundPosition: 'center',
+             backgroundRepeat: 'no-repeat'
+           }}>
+        <div className="absolute inset-0 bg-background/80"></div>
+        <div className="max-w-2xl mx-auto relative z-10">
           <Card className="border-primary/20 shadow-xl backdrop-blur-sm bg-card/95 animate-fade-in">
-            <div className="relative">
-              <div className="mx-auto w-full max-w-md mb-6 pt-6">
-                <img 
-                  src={welcomeDoodle} 
-                  alt="Child speaking with speech bubbles" 
-                  className="w-full h-auto rounded-lg opacity-90"
-                />
-              </div>
-              <CardHeader className="text-center space-y-4 relative z-10">
-                <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-sky rounded-full flex items-center justify-center shadow-lg overflow-hidden hover-scale">
-                  <img src={appIcon} alt="Little Talk Buddy" className="w-12 h-12 object-contain" />
-                </div>
-                <CardTitle className="text-3xl bg-gradient-to-r from-primary to-sky bg-clip-text text-transparent">
-                  Speech Development Screening
-                </CardTitle>
-                <CardDescription className="text-lg text-muted-foreground">
-                  A simple tool to help parents track their child's speech and language milestones
-                </CardDescription>
-              </CardHeader>
-            </div>
+            <CardHeader className="text-center space-y-4 pt-8">
+              <CardTitle className="text-3xl bg-gradient-to-r from-primary to-sky bg-clip-text text-transparent">
+                Speech Development Screening
+              </CardTitle>
+              <CardDescription className="text-lg text-muted-foreground">
+                A simple tool to help parents track their child's speech and language milestones
+              </CardDescription>
+            </CardHeader>
             
             <CardContent className="space-y-6">
               <div className="bg-gradient-to-r from-accent to-sky-soft p-4 rounded-lg border border-accent/30">
@@ -282,11 +278,11 @@ export default function SpeechScreening() {
         <div className="max-w-2xl mx-auto">
           <Card className="backdrop-blur-sm bg-card/95 shadow-xl animate-fade-in">
             <div className="relative">
-              <div className="mx-auto w-full max-w-md mb-6 pt-6">
+              <div className="mx-auto w-full mb-6 pt-6 px-6">
                 <img 
                   src={ageSelectionDoodle} 
                   alt="Children of different ages playing" 
-                  className="w-full h-auto rounded-lg opacity-90"
+                  className="w-full h-auto rounded-lg opacity-90 object-cover"
                 />
               </div>
               <CardHeader className="text-center relative z-10">
@@ -356,11 +352,11 @@ export default function SpeechScreening() {
           </div>
           
           <Card className="animate-scale-in">
-            <div className="mx-auto w-full max-w-sm mb-4 pt-4">
+            <div className="mx-auto w-full mb-4 pt-4 px-4">
               <img 
                 src={screeningDoodle} 
                 alt="Parent observing child" 
-                className="w-full h-auto rounded-lg opacity-80"
+                className="w-full h-auto rounded-lg opacity-80 object-cover"
               />
             </div>
             <CardHeader>
@@ -410,11 +406,11 @@ export default function SpeechScreening() {
       <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card className="animate-fade-in">
-            <div className="mx-auto w-full max-w-sm mb-6 pt-6">
+            <div className="mx-auto w-full mb-6 pt-6 px-6">
               <img 
                 src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
                 alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
-                className="w-full h-auto rounded-lg opacity-90"
+                className="w-full h-auto rounded-lg opacity-90 object-cover"
               />
             </div>
             <CardHeader className="text-center">
