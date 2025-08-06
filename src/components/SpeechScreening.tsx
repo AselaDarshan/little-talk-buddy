@@ -290,7 +290,7 @@ export default function SpeechScreening() {
               <img 
                 src={ageSelectionDoodle} 
                 alt="Children of different ages playing" 
-                className="w-full h-48 rounded-lg opacity-90 object-cover"
+                className="w-full h-32 rounded-lg opacity-90 object-cover"
                 loading="eager"
                 fetchPriority="high"
               />
@@ -362,22 +362,12 @@ export default function SpeechScreening() {
               </CardTitle>
             </CardHeader>
             
-            <div className="mx-auto w-full mb-4 px-4">
-              <img 
-                src={screeningDoodle} 
-                alt="Parent observing child" 
-                className="w-full h-48 rounded-lg opacity-80 object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
-            
             <CardContent>
               <p className="text-muted-foreground mb-6">
                 Does your child currently do this?
               </p>
               
-              <div className="grid gap-4">
+              <div className="grid gap-4 mb-6">
                 <Button
                   onClick={() => handleAnswer(currentMilestone.id, true)}
                   className="w-full p-4 h-auto bg-gradient-to-r from-success to-success/80 hover:from-success/90 hover:to-success/70 text-success-foreground shadow-lg transition-all duration-300 hover:scale-[1.02]"
@@ -394,6 +384,16 @@ export default function SpeechScreening() {
                   <AlertCircle className="w-5 h-5 mr-2" />
                   Not yet or rarely
                 </Button>
+              </div>
+              
+              <div className="mx-auto w-full">
+                <img 
+                  src={screeningDoodle} 
+                  alt="Parent observing child" 
+                  className="w-full h-32 rounded-lg opacity-80 object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                />
               </div>
             </CardContent>
           </Card>
@@ -430,7 +430,7 @@ export default function SpeechScreening() {
               <img 
                 src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
                 alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
-                className="w-full h-48 rounded-lg opacity-90 object-cover"
+                className="w-full h-32 rounded-lg opacity-90 object-cover"
                 loading="eager"
                 fetchPriority="high"
               />
