@@ -277,22 +277,23 @@ export default function SpeechScreening() {
       <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card className="backdrop-blur-sm bg-card/95 shadow-xl animate-fade-in">
-            <div className="relative">
-              <div className="mx-auto w-full mb-6 pt-6 px-6">
-                <img 
-                  src={ageSelectionDoodle} 
-                  alt="Children of different ages playing" 
-                  className="w-full h-auto rounded-lg opacity-90 object-cover"
-                />
-              </div>
-              <CardHeader className="text-center relative z-10">
-                <CardTitle className="text-2xl bg-gradient-to-r from-primary to-coral bg-clip-text text-transparent">
-                  Select Your Child's Age
-                </CardTitle>
-                <CardDescription className="text-base">
-                  Choose the age group that best matches your child's current age
-                </CardDescription>
-              </CardHeader>
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-coral bg-clip-text text-transparent">
+                Select Your Child's Age
+              </CardTitle>
+              <CardDescription className="text-base">
+                Choose the age group that best matches your child's current age
+              </CardDescription>
+            </CardHeader>
+            
+            <div className="mx-auto w-full mb-6 px-6">
+              <img 
+                src={ageSelectionDoodle} 
+                alt="Children of different ages playing" 
+                className="w-full h-48 rounded-lg opacity-90 object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
             </div>
             
             <CardContent className="space-y-4">
@@ -352,13 +353,6 @@ export default function SpeechScreening() {
           </div>
           
           <Card className="animate-scale-in">
-            <div className="mx-auto w-full mb-4 pt-4 px-4">
-              <img 
-                src={screeningDoodle} 
-                alt="Parent observing child" 
-                className="w-full h-auto rounded-lg opacity-80 object-cover"
-              />
-            </div>
             <CardHeader>
               <div className="flex items-center gap-2 mb-2">
                 <Badge className="bg-accent text-accent-foreground">{currentMilestone.category}</Badge>
@@ -367,6 +361,16 @@ export default function SpeechScreening() {
                 {currentMilestone.question}
               </CardTitle>
             </CardHeader>
+            
+            <div className="mx-auto w-full mb-4 px-4">
+              <img 
+                src={screeningDoodle} 
+                alt="Parent observing child" 
+                className="w-full h-48 rounded-lg opacity-80 object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </div>
             
             <CardContent>
               <p className="text-muted-foreground mb-6">
@@ -406,13 +410,6 @@ export default function SpeechScreening() {
       <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
         <div className="max-w-2xl mx-auto">
           <Card className="animate-fade-in">
-            <div className="mx-auto w-full mb-6 pt-6 px-6">
-              <img 
-                src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
-                alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
-                className="w-full h-auto rounded-lg opacity-90 object-cover"
-              />
-            </div>
             <CardHeader className="text-center">
               <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center animate-scale-in ${
                 resultMessage.type === "success" ? "bg-success-soft" : "bg-warning-soft"
@@ -428,6 +425,16 @@ export default function SpeechScreening() {
                 {resultMessage.message}
               </CardDescription>
             </CardHeader>
+            
+            <div className="mx-auto w-full mb-6 px-6">
+              <img 
+                src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
+                alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
+                className="w-full h-48 rounded-lg opacity-90 object-cover"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </div>
             
             <CardContent className="space-y-6">
               <div className="text-center">
