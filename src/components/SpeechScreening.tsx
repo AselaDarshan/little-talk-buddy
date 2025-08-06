@@ -290,7 +290,7 @@ export default function SpeechScreening() {
               <img 
                 src={ageSelectionDoodle} 
                 alt="Children of different ages playing" 
-                className="w-full h-32 rounded-lg opacity-90 object-cover"
+                className="w-full h-40 rounded-lg opacity-90 object-cover"
                 loading="eager"
                 fetchPriority="high"
               />
@@ -390,7 +390,7 @@ export default function SpeechScreening() {
                 <img 
                   src={screeningDoodle} 
                   alt="Parent observing child" 
-                  className="w-full h-32 rounded-lg opacity-80 object-cover"
+                  className="w-full h-40 rounded-lg opacity-80 object-cover"
                   loading="eager"
                   fetchPriority="high"
                 />
@@ -430,7 +430,7 @@ export default function SpeechScreening() {
               <img 
                 src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
                 alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
-                className="w-full h-32 rounded-lg opacity-90 object-cover"
+                className="w-full h-40 rounded-lg opacity-90 object-cover"
                 loading="eager"
                 fetchPriority="high"
               />
