@@ -8,13 +8,8 @@ import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart, Star, ThumbsUp,
 import { analytics } from "@/lib/analytics";
 import childrenLearning from "@/assets/children-learning.jpg";
 import familyBonding from "@/assets/family-bonding.jpg";
-import appIcon from "@/assets/app-icon.png";
-import welcomeDoodle from "@/assets/welcome-doodle.png";
 import welcomeBackground from "@/assets/welcome-background.png";
-import ageSelectionDoodle from "@/assets/age-selection-doodle.png";
-import screeningDoodle from "@/assets/screening-doodle.png";
-import resultsSuccessDoodle from "@/assets/results-success-doodle.png";
-import resultsSupportDoodle from "@/assets/results-support-doodle.png";
+import backgroundArt from "@/assets/background-art.jpg";
 
 interface Milestone {
   id: string;
@@ -274,8 +269,9 @@ export default function SpeechScreening() {
 
   if (currentStep === "age-selection") {
     return (
-      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
-        <div className="max-w-2xl mx-auto">
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${childrenLearning})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div className="absolute inset-0 bg-background/80"></div>
+        <div className="max-w-2xl mx-auto relative z-10">
           <Card className="backdrop-blur-sm bg-card/95 shadow-xl animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl bg-gradient-to-r from-primary to-coral bg-clip-text text-transparent">
@@ -286,15 +282,6 @@ export default function SpeechScreening() {
               </CardDescription>
             </CardHeader>
             
-            <div className="mx-auto w-full mb-6 px-6">
-              <img 
-                src={ageSelectionDoodle} 
-                alt="Children of different ages playing" 
-                className="w-full h-40 rounded-lg opacity-90 object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
             
             <CardContent className="space-y-4">
               {ageGroups.map((group) => (
@@ -340,8 +327,9 @@ export default function SpeechScreening() {
     const progress = ((currentQuestionIndex) / selectedAgeGroup.milestones.length) * 100;
 
     return (
-      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
-        <div className="max-w-2xl mx-auto">
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${familyBonding})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div className="absolute inset-0 bg-background/80"></div>
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="mb-6 animate-fade-in">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-muted-foreground">
@@ -386,15 +374,6 @@ export default function SpeechScreening() {
                 </Button>
               </div>
               
-              <div className="mx-auto w-full">
-                <img 
-                  src={screeningDoodle} 
-                  alt="Parent observing child" 
-                  className="w-full h-40 rounded-lg opacity-80 object-cover"
-                  loading="eager"
-                  fetchPriority="high"
-                />
-              </div>
             </CardContent>
           </Card>
         </div>
@@ -407,8 +386,9 @@ export default function SpeechScreening() {
     const resultMessage = getResultMessage(results.percentage);
 
     return (
-      <div className="min-h-screen bg-background p-4" style={{ minHeight: '100dvh' }}>
-        <div className="max-w-2xl mx-auto">
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${backgroundArt})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div className="absolute inset-0 bg-background/80"></div>
+        <div className="max-w-2xl mx-auto relative z-10">
           <Card className="animate-fade-in">
             <CardHeader className="text-center">
               <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center animate-scale-in ${
@@ -426,15 +406,6 @@ export default function SpeechScreening() {
               </CardDescription>
             </CardHeader>
             
-            <div className="mx-auto w-full mb-6 px-6">
-              <img 
-                src={resultMessage.type === "success" ? resultsSuccessDoodle : resultsSupportDoodle} 
-                alt={resultMessage.type === "success" ? "Success celebration" : "Supportive guidance"} 
-                className="w-full h-40 rounded-lg opacity-90 object-cover"
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
             
             <CardContent className="space-y-6">
               <div className="text-center">
