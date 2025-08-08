@@ -40,61 +40,61 @@ const ageGroups: AgeGroup[] = [
         category: "Speech"
       },
       {
-        id: "m2", 
+        id: "m2",
         question: "Responds to their name when called",
         ageRange: "12-18 months",
         category: "Understanding"
       },
       {
         id: "m3",
-        question: "Points to show you something interesting",
-        ageRange: "12-18 months", 
+        question: "Uses gestures to communicate (pointing, showing, waving)",
+        ageRange: "12-18 months",
         category: "Communication"
       },
       {
         id: "m4",
-        question: "Waves goodbye or claps hands",
+        question: "Tries to copy sounds and words you say",
         ageRange: "12-18 months",
-        category: "Social"
+        category: "Speech"
       }
     ]
   },
   {
     id: "18-24",
-    name: "18-24 months", 
+    name: "18-24 months",
     range: "18-24 months",
     icon: "🧒",
     milestones: [
       {
         id: "m5",
-        question: "Says 10-20 words clearly",
+        question: "Says at least 20 different words",
         ageRange: "18-24 months",
         category: "Speech"
       },
       {
         id: "m6",
-        question: "Follows simple commands like 'get your shoes'",
-        ageRange: "18-24 months", 
+        question: "Follows simple one-step directions without gestures (e.g., 'get your shoes')",
+        ageRange: "18-24 months",
         category: "Understanding"
       },
       {
         id: "m7",
-        question: "Points to body parts when asked",
+        question: "Points to body parts or familiar pictures when named",
         ageRange: "18-24 months",
         category: "Understanding"
       },
       {
         id: "m8",
-        question: "Shows interest in other children",
+        question: "Imitates new words and sounds during play",
         ageRange: "18-24 months",
-        category: "Social"
+        category: "Speech"
       }
     ]
   },
   {
     id: "24-36",
     name: "2-3 years",
-    range: "24-36 months", 
+    range: "24-36 months",
     icon: "👦",
     milestones: [
       {
@@ -110,16 +110,16 @@ const ageGroups: AgeGroup[] = [
         category: "Speech"
       },
       {
-        id: "m11", 
+        id: "m11",
         question: "Strangers can understand about half of what they say",
         ageRange: "24-36 months",
         category: "Speech"
       },
       {
         id: "m12",
-        question: "Asks simple questions like 'What's that?'",
-        ageRange: "24-36 months", 
-        category: "Communication"
+        question: "Follows two-step directions like 'get your cup and sit down'",
+        ageRange: "24-36 months",
+        category: "Understanding"
       }
     ]
   }
@@ -250,6 +250,17 @@ export default function SpeechScreening() {
                   <span className="text-sm text-coral font-medium">Guidance for next steps</span>
                 </div>
               </div>
+
+              <div className="bg-muted/40 p-4 rounded-lg border border-muted/30">
+                <h3 className="font-semibold mb-2">Bilingual children</h3>
+                <p className="text-sm text-muted-foreground">
+                  Hearing two languages does not cause speech delay. Count words across all languages, and mixing languages is typical.
+                </p>
+              </div>
+
+              <p className="text-xs text-muted-foreground">
+                Sources: American Speech-Language-Hearing Association (ASHA); Speech Pathology Australia.
+              </p>
             </CardContent>
             
             <CardFooter>
