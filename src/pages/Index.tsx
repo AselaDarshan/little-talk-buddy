@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import Seo from "@/components/Seo";
-import heroDoodle from "@/assets/welcome-doodle.png";
+import heroCover from "@/assets/hero-cover.png";
 const Index = () => {
   const { toast } = useToast();
 
@@ -44,21 +44,27 @@ const Index = () => {
 
       <div className="min-h-dvh flex flex-col">
         <header className="py-6">
-          <nav className="flex items-center justify-between">
-            <Link to="/" className="text-lg font-semibold tracking-tight">
-              Toddler Speech & Language
-            </Link>
-            <div className="flex items-center gap-3">
-              <Link to="/screening">
-                <Button size="sm">Start Screening</Button>
+          <div className="max-w-6xl mx-auto px-4 md:px-6">
+            <nav className="flex items-center justify-between">
+              <Link to="/" className="text-lg font-semibold tracking-tight">
+                Toddler Speech & Language
               </Link>
-            </div>
-          </nav>
+              <div className="flex items-center gap-3">
+                <Link to="/screening">
+                  <Button size="sm">Start Screening</Button>
+                </Link>
+              </div>
+            </nav>
+          </div>
         </header>
 
         <main className="flex-1">
-          <section className="py-16 md:py-24 text-center bg-gradient-to-b from-primary/10 to-transparent rounded-2xl">
-            <div className="max-w-3xl mx-auto px-4">
+          <section
+            className="relative py-16 md:py-24 text-center rounded-2xl bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroCover})` }}
+          >
+            <div className="absolute inset-0 bg-background/70 rounded-2xl" aria-hidden="true"></div>
+            <div className="relative max-w-3xl mx-auto px-4">
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Toddler Speech & Language Development Tools</h1>
               <p className="mt-4 text-muted-foreground">
                 Help your toddler thrive with quick checks and parent-friendly guidance.
@@ -68,39 +74,33 @@ const Index = () => {
                   <Button size="lg">Free Screening (12–36 months)</Button>
                 </Link>
               </div>
-              <div className="mt-10 flex justify-center">
-                <img
-                  src={heroDoodle}
-                  alt="Toddler speech screening doodle illustration"
-                  loading="lazy"
-                  className="w-[320px] h-auto drop-shadow-md"
-                />
-              </div>
             </div>
           </section>
 
-          <section className="mt-12 grid gap-6 md:grid-cols-3">
-            <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
-              <h2 className="text-xl font-semibold">Screening Tool</h2>
-              <p className="text-sm text-muted-foreground mt-2">
-                Answer quick questions aligned with ASHA and Speech Pathology Australia.
-              </p>
-              <Link to="/screening" className="inline-block mt-4">
-                <Button variant="secondary">Start now</Button>
-              </Link>
-            </article>
+          <section className="mt-12">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 grid gap-6 md:grid-cols-3">
+              <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
+                <h2 className="text-xl font-semibold">Screening Tool</h2>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Answer quick questions aligned with ASHA and Speech Pathology Australia.
+                </p>
+                <Link to="/screening" className="inline-block mt-4">
+                  <Button variant="secondary">Start now</Button>
+                </Link>
+              </article>
 
-            <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
-              <h3 className="font-medium">Daily Language Activities</h3>
-              <p className="text-sm text-muted-foreground mt-2">Short, playful ideas to build skills.</p>
-              <span className="mt-3 inline-flex text-xs px-2 py-1 rounded-full bg-muted">Coming soon</span>
-            </article>
+              <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
+                <h3 className="font-medium">Daily Language Activities</h3>
+                <p className="text-sm text-muted-foreground mt-2">Short, playful ideas to build skills.</p>
+                <span className="mt-3 inline-flex text-xs px-2 py-1 rounded-full bg-muted">Coming soon</span>
+              </article>
 
-            <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
-              <h3 className="font-medium">Progress Tracker</h3>
-              <p className="text-sm text-muted-foreground mt-2">Track milestones and celebrate growth.</p>
-              <span className="mt-3 inline-flex text-xs px-2 py-1 rounded-full bg-muted">Coming soon</span>
-            </article>
+              <article className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
+                <h3 className="font-medium">Progress Tracker</h3>
+                <p className="text-sm text-muted-foreground mt-2">Track milestones and celebrate growth.</p>
+                <span className="mt-3 inline-flex text-xs px-2 py-1 rounded-full bg-muted">Coming soon</span>
+              </article>
+            </div>
           </section>
 
           <section className="mt-12">
