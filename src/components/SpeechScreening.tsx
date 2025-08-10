@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart, Star, ThumbsUp, ThumbsDown } from "lucide-react";
+import { CheckCircle, AlertCircle, Baby, Users, Sparkles, Heart, Star, ThumbsUp, ThumbsDown, Home, Loader2 } from "lucide-react";
 import { analytics } from "@/lib/analytics";
-import childrenLearning from "@/assets/children-learning.jpg";
-import familyBonding from "@/assets/family-bonding.jpg";
 import welcomeBackground from "@/assets/welcome-background.png";
-import backgroundArt from "@/assets/background-art.jpg";
+import calmingPattern from "@/assets/calming-pattern.jpg";
+import { Link } from "react-router-dom";
 
 interface Milestone {
   id: string;
@@ -132,7 +131,29 @@ export default function SpeechScreening() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | null>(null);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [feedback, setFeedback] = useState({ rating: 0, comment: "", submitted: false });
+const [feedback, setFeedback] = useState({ rating: 0, comment: "", submitted: false });
+
+  const [welcomeLoaded, setWelcomeLoaded] = useState(false);
+  useEffect(() => {
+    let isMounted = true;
+    const sources = [welcomeBackground];
+    Promise.all(
+      sources.map(
+        (src) =>
+          new Promise<void>((resolve) => {
+            const img = new Image();
+            img.src = src;
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+          })
+      )
+    ).then(() => {
+      if (isMounted) setWelcomeLoaded(true);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleAgeSelection = (ageGroup: AgeGroup) => {
     setSelectedAgeGroup(ageGroup);
@@ -202,6 +223,16 @@ export default function SpeechScreening() {
     analytics.restartScreening();
   };
 
+if (currentStep === "welcome" && !welcomeLoaded) {
+    return (
+      <div className="min-h-screen grid place-items-center">
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <Loader2 className="w-5 h-5 animate-spin" />
+          <span>Loading...</span>
+        </div>
+      </div>
+    );
+  }
   if (currentStep === "welcome") {
     return (
       <div className="min-h-screen bg-background p-4 pb-safe-bottom relative"
@@ -214,6 +245,13 @@ export default function SpeechScreening() {
            }}>
         <div className="absolute inset-0 bg-background/80"></div>
         <div className="max-w-2xl mx-auto relative z-10">
+          <header className="flex items-center justify-between py-4">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <Home className="w-5 h-5" aria-hidden="true" />
+              <span className="sr-only">Home</span>
+            </Link>
+            <div className="text-sm font-medium">Toddler Speech Screening</div>
+          </header>
           <Card className="border-primary/20 shadow-xl backdrop-blur-sm bg-card/95 animate-fade-in">
             <CardHeader className="text-center space-y-4 pt-8">
               <CardTitle className="text-3xl bg-gradient-to-r from-primary to-sky bg-clip-text text-transparent">
@@ -280,9 +318,16 @@ export default function SpeechScreening() {
 
   if (currentStep === "age-selection") {
     return (
-      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${childrenLearning})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${calmingPattern})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="absolute inset-0 bg-background/80"></div>
         <div className="max-w-2xl mx-auto relative z-10">
+          <header className="flex items-center justify-between py-4">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <Home className="w-5 h-5" aria-hidden="true" />
+              <span className="sr-only">Home</span>
+            </Link>
+            <div className="text-sm font-medium">Toddler Speech Screening</div>
+          </header>
           <Card className="backdrop-blur-sm bg-card/95 shadow-xl animate-fade-in">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl bg-gradient-to-r from-primary to-coral bg-clip-text text-transparent">
@@ -338,9 +383,16 @@ export default function SpeechScreening() {
     const progress = ((currentQuestionIndex) / selectedAgeGroup.milestones.length) * 100;
 
     return (
-      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${familyBonding})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${calmingPattern})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="absolute inset-0 bg-background/80"></div>
         <div className="max-w-2xl mx-auto relative z-10">
+          <header className="flex items-center justify-between py-4">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <Home className="w-5 h-5" aria-hidden="true" />
+              <span className="sr-only">Home</span>
+            </Link>
+            <div className="text-sm font-medium">Toddler Speech Screening</div>
+          </header>
           <div className="mb-6 animate-fade-in">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-muted-foreground">
@@ -397,9 +449,16 @@ export default function SpeechScreening() {
     const resultMessage = getResultMessage(results.percentage);
 
     return (
-      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${backgroundArt})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="min-h-screen bg-background p-4 pb-safe-bottom relative" style={{ minHeight: '100dvh', backgroundImage: `url(${calmingPattern})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
         <div className="absolute inset-0 bg-background/80"></div>
         <div className="max-w-2xl mx-auto relative z-10">
+          <header className="flex items-center justify-between py-4">
+            <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <Home className="w-5 h-5" aria-hidden="true" />
+              <span className="sr-only">Home</span>
+            </Link>
+            <div className="text-sm font-medium">Toddler Speech Screening</div>
+          </header>
           <Card className="animate-fade-in">
             <CardHeader className="text-center">
               <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center animate-scale-in ${

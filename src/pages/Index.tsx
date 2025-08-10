@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import Seo from "@/components/Seo";
-
+import heroDoodle from "@/assets/welcome-doodle.png";
 const Index = () => {
   const { toast } = useToast();
 
@@ -68,6 +68,14 @@ const Index = () => {
                   <Button size="lg">Free Screening (12–36 months)</Button>
                 </Link>
               </div>
+              <div className="mt-10 flex justify-center">
+                <img
+                  src={heroDoodle}
+                  alt="Toddler speech screening doodle illustration"
+                  loading="lazy"
+                  className="w-[320px] h-auto drop-shadow-md"
+                />
+              </div>
             </div>
           </section>
 
@@ -117,9 +125,6 @@ const Index = () => {
           </section>
         </main>
 
-        <footer className="py-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Toddler Speech & Language. All rights reserved.
-        </footer>
       </div>
     </>
   );
